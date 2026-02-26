@@ -1,233 +1,552 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HAIP @ CUI 2026 | Human-Agent Identities & Privacy</title>
-  <meta name="description" content="HAIP (Human-Agent Identities & Privacy) workshop at CUI 2026. Privacy-centered research agenda for conversational and agentic systems." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HAIP @ CUI 2026 | Human–Agent Identities & Privacy</title>
+  <meta name="description" content="HAIP (Human–Agent Identities & Privacy) workshop at CUI 2026. Privacy-centered research agenda for conversational and agentic systems." />
+  <meta name="theme-color" content="#0b1220" />
+
   <style>
+    /* ============== Design tokens ============== */
     :root{
-      --bg:#0b1220;
-      --panel:#101a2e;
-      --text:#e6edf7;
-      --muted:#a9b6cc;
-      --accent:#38bdf8;
-      --border:#23324f;
-      --chip:#152243;
+      --bg: #070b14;
+      --bg2:#0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.09);
+      --border: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --subtle: rgba(255,255,255,0.55);
+
+      --a: #38bdf8;   /* cyan */
+      --b: #a78bfa;   /* violet */
+      --c: #34d399;   /* green */
+      --warn:#fbbf24; /* amber */
+
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1080px;
     }
-    *{box-sizing:border-box}
+
+    /* ============== Base ============== */
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1000px 700px at 20% -10%, rgba(56,189,248,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(167,139,250,.20), transparent 55%),
+        radial-gradient(900px 700px at 40% 110%, rgba(52,211,153,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       line-height:1.65;
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    header{
-      background:linear-gradient(180deg, #0f1b33 0%, var(--bg) 100%);
-      border-bottom:1px solid var(--border);
-      padding:52px 18px 28px;
-      text-align:center;
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+    .container{ max-width: var(--max); margin: 0 auto; padding: 0 18px; }
+
+    /* ============== Top bar ============== */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,11,20,.55);
+      border-bottom: 1px solid var(--border);
     }
-    header h1{margin:0; font-size:2.2rem; letter-spacing:0.2px}
-    header p{margin:10px 0 0; color:var(--muted)}
-    nav{
-      margin:18px auto 0;
+    .topbar-inner{
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 0;
     }
-    nav a{
-      padding:8px 12px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      background:rgba(16,26,46,0.6);
-      color:var(--text);
-      font-size:0.95rem;
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 700;
+      letter-spacing: .2px;
     }
-    main{max-width:980px; margin:0 auto; padding:22px 18px 60px}
-    section{
-      background:rgba(16,26,46,0.55);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:18px 18px 14px;
-      margin:16px 0;
+    .logo{
+      width: 34px; height: 34px; border-radius: 10px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.45), transparent 55%),
+        linear-gradient(135deg, rgba(56,189,248,.95), rgba(167,139,250,.95));
+      box-shadow: 0 10px 25px rgba(56,189,248,.15);
+      border: 1px solid rgba(255,255,255,.18);
     }
-    h2{margin:0 0 10px; font-size:1.35rem}
-    .muted{color:var(--muted)}
-    .grid{
+    .nav{
+      display:flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--border);
+      text-decoration: none;
+      background: rgba(255,255,255,.04);
+    }
+
+    /* ============== Hero ============== */
+    .hero{
+      padding: 54px 0 22px;
+    }
+    .hero-grid{
       display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
+      gap: 18px;
+      grid-template-columns: 1fr;
+      align-items: stretch;
     }
-    @media (min-width: 860px){
-      .grid{grid-template-columns: 1fr 1fr;}
+    @media (min-width: 920px){
+      .hero-grid{ grid-template-columns: 1.35fr .65fr; }
     }
-    .chiprow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .chip{
-      background:var(--chip);
-      border:1px solid var(--border);
-      color:var(--text);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:0.92rem;
+    .hero-card{
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+      padding: 22px;
     }
-    ul{margin:10px 0 12px 20px}
-    footer{
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      padding:18px;
+    .hero-card:before{
+      content:"";
+      position:absolute; inset: -1px;
+      background: radial-gradient(700px 140px at 20% 0%, rgba(56,189,248,.25), transparent 60%),
+                  radial-gradient(700px 140px at 80% 0%, rgba(167,139,250,.22), transparent 60%);
+      opacity:.7;
+      pointer-events:none;
+      mask: linear-gradient(#000, transparent 70%);
+    }
+    .kicker{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: .92rem;
+      position: relative;
+      z-index: 1;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--c);
+      box-shadow: 0 0 0 4px rgba(52,211,153,.15);
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(2.0rem, 3.6vw, 3.0rem);
+      line-height:1.12;
+      letter-spacing:-.4px;
+      position: relative;
+      z-index: 1;
+    }
+    .subtitle{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      position: relative;
+      z-index: 1;
+      max-width: 66ch;
+    }
+    .cta-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 600;
+      text-decoration:none;
+    }
+    .btn:hover{ text-decoration:none; background: rgba(255,255,255,.07); }
+    .btn.primary{
+      border-color: rgba(56,189,248,.45);
+      background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(167,139,250,.15));
+    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(56,189,248,.24), rgba(167,139,250,.20)); }
+    .btn .icon{
+      width: 18px; height: 18px;
+      display:inline-block;
+      border-radius: 6px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    /* ============== Side info card ============== */
+    .side{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mini{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+    .mini h3{ margin:0 0 6px; font-size: 1.02rem; }
+    .mini p{ margin:0; color: var(--muted); font-size: .98rem; }
+    .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    /* ============== Sections ============== */
+    .section{
+      margin: 16px 0;
+      padding: 0;
+    }
+    .card{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -.2px;
+    }
+    .lead{ color: var(--muted); margin: 0 0 12px; }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 900px){
+      .grid2{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* list styling */
+    ul{ margin: 10px 0 0 18px; color: var(--muted); }
+    li{ margin: 6px 0; }
+
+    /* ============== Timeline ============== */
+    .timeline{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .trow{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .tbadge{
+      min-width: 92px;
+      font-size: .88rem;
+      color: rgba(255,255,255,.78);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
       text-align:center;
-      font-size:0.92rem;
     }
-    .callout{
-      padding:12px 12px;
-      border-left:4px solid var(--accent);
-      background:rgba(56,189,248,0.08);
-      border-radius:10px;
-      margin:10px 0 0;
+    .trow strong{ color: var(--text); }
+    .trow span{ color: var(--muted); }
+
+    /* ============== Organizer cards ============== */
+    .people{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
     }
+    @media (min-width: 900px){
+      .people{ grid-template-columns: 1fr 1fr; }
+    }
+    .person{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .person .name{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .tag{
+      font-size: .85rem;
+      color: rgba(255,255,255,.75);
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      white-space: nowrap;
+    }
+    .person p{ margin: 6px 0 0; color: var(--muted); }
+
+    /* ============== Footer ============== */
+    footer{
+      margin-top: 26px;
+      padding: 26px 0 40px;
+      color: var(--subtle);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============== Utility ============== */
+    .note{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(56,189,248,.28);
+      background: rgba(56,189,248,.08);
+      color: rgba(255,255,255,.82);
+    }
+    .small{ font-size: .95rem; color: var(--muted); }
   </style>
 </head>
+
 <body>
-
-<header>
-  <h1>HAIP @ CUI 2026</h1>
-  <p>Human-Agent Identities & Privacy</p>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#cfp">Call for Participation</a>
-    <a href="#dates">Important Dates</a>
-    <a href="#accessibility">Accessibility</a>
-    <a href="#organizers">Organizers</a>
-  </nav>
-</header>
-
-<main>
-  <section id="about">
-    <h2>About the Workshop</h2>
-    <p>
-      The rapid emergence of conversational AI, generative systems, and autonomous agents is reshaping how identities are
-      constructed, inferred, and enacted across human-agent ecosystems. These systems increasingly collect, process, and act
-      upon sensitive personal data, perform behavioral inference, integrate multimodal information, and mediate access to social
-      and institutional resources.
-    </p>
-    <p>
-      HAIP (Human-Agent Identities & Privacy) positions privacy at the center of human-agent interaction. We examine
-      agent-mediated data exposure, identity inference, cross-modal information leakage, secondary data use, and risks to
-      historically understudied and structurally vulnerable populations. Beyond analyzing harms, HAIP also invites
-      <strong>privacy-centered provotypes</strong>: early-stage, design-oriented explorations of how conversational agents can embed
-      contextual integrity, data minimization, identity protection, and structural safeguards from the outset.
-    </p>
-
-    <div class="chiprow">
-      <span class="chip">Privacy-centered human-agent ecosystems</span>
-      <span class="chip">Identity & agency</span>
-      <span class="chip">Multimodal leakage</span>
-      <span class="chip">Secondary data use</span>
-      <span class="chip">Provotypes & design explorations</span>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>HAIP @ CUI 2026</div>
+      </div>
+      <div class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#cfp">Call</a>
+        <a href="#dates">Dates</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#organizers">Organizers</a>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section id="cfp">
-    <h2>Call for Participation</h2>
-    <p>
-      We invite contributions that address identity, agency, and data governance in conversational and agentic systems.
-      Submissions will be lightly reviewed by the organizers to ensure quality, relevance, and diversity of perspectives.
-    </p>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker"><span class="dot"></span> Co-located with CUI 2026 · Workshop</div>
+          <h1>Human–Agent Identities & Privacy</h1>
+          <p class="subtitle">
+            HAIP centers privacy in human-agent ecosystems: identity inference, agent-mediated exposure, cross-modal leakage,
+            secondary data use, and safeguards for structurally vulnerable populations. We also welcome privacy-centered provotypes
+            that prototype better futures instead of just describing worse ones.
+          </p>
 
-    <div class="grid">
-      <div>
-        <h3 style="margin:0 0 8px">Submission Types</h3>
-        <ul>
-          <li><strong>Short position papers</strong> (2–4 pages)</li>
-          <li><strong>Privacy-centered provotypes</strong> (design-oriented, exploratory contributions)</li>
-        </ul>
-        <p class="muted" style="margin-top:0">
-          Formats are intentionally lightweight to reduce barriers and welcome emerging work.
+          <div class="cta-row">
+            <a class="btn primary" href="#cfp"><span class="icon" aria-hidden="true"></span>Call for Participation</a>
+            <a class="btn" href="#dates"><span class="icon" aria-hidden="true"></span>Important Dates</a>
+            <a class="btn" href="#organizers"><span class="icon" aria-hidden="true"></span>Organizers</a>
+          </div>
+
+          <div class="note">
+            <strong>Placeholders warning:</strong> Submission portal, templates, and final dates can be plugged in once CUI 2026 releases the workshop timeline.
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="mini">
+            <h3>At a glance</h3>
+            <p>Privacy-centered HAI research + design explorations for agentic systems.</p>
+            <div class="pillrow">
+              <span class="pill">Identity inference</span>
+              <span class="pill">Multimodal leakage</span>
+              <span class="pill">Governance</span>
+              <span class="pill">Provotypes</span>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h3>Submission types</h3>
+            <p><strong>2–4 page</strong> position papers, plus design-oriented <strong>provotypes</strong>.</p>
+            <p class="small" style="margin-top:8px">Lightweight by design, to reduce barriers.</p>
+          </div>
+
+          <div class="mini">
+            <h3>Format</h3>
+            <p>Talks + moderated discussion + small-group breakouts + written contributions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="card">
+        <h2>About</h2>
+        <p class="lead">
+          Conversational AI and autonomous agents increasingly collect, infer, and act on sensitive data. HAIP treats privacy as a
+          first-class constraint, not an afterthought.
+        </p>
+        <p>
+          We examine how identities are constructed and exploited in human-agent ecosystems: behavioral inference, cross-context
+          data reuse, and failure modes that disproportionately affect under-protected communities. We also encourage designs that
+          operationalize contextual integrity, data minimization, and identity protection.
         </p>
       </div>
+    </section>
 
-      <div>
-        <h3 style="margin:0 0 8px">Suggested Themes</h3>
+    <section id="cfp" class="section">
+      <div class="card">
+        <h2>Call for Participation</h2>
+        <p class="lead">
+          We invite contributions across technical, social, legal, and design perspectives on identity and privacy in conversational and agentic systems.
+        </p>
+
+        <div class="grid2">
+          <div class="card" style="background: rgba(255,255,255,.04);">
+            <h3 style="margin:0 0 8px;">Submission types</h3>
+            <ul>
+              <li><strong>Short position papers</strong> (2–4 pages)</li>
+              <li><strong>Privacy-centered provotypes</strong> (design-oriented exploratory contributions)</li>
+            </ul>
+          </div>
+
+          <div class="card" style="background: rgba(255,255,255,.04);">
+            <h3 style="margin:0 0 8px;">Suggested themes</h3>
+            <ul>
+              <li>Agent-mediated data exposure and identity inference</li>
+              <li>Cross-modal leakage (text, voice, vision, sensors)</li>
+              <li>Behavioral inference and sensitive attribute prediction</li>
+              <li>Secondary data use and governance in agentic workflows</li>
+              <li>Risks for structurally vulnerable or understudied populations</li>
+              <li>Contextual integrity, data minimization, identity protection by design</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Reviewing:</strong> Submissions will be lightly reviewed by organizers for relevance and quality, to curate a diverse and constructive program.
+        </div>
+      </div>
+    </section>
+
+    <section id="dates" class="section">
+      <div class="card">
+        <h2>Important Dates</h2>
+        <p class="lead">Dates are currently placeholders. Replace once CUI 2026 publishes the workshop timeline.</p>
+
+        <div class="timeline">
+          <div class="trow">
+            <div class="tbadge">TBD</div>
+            <div><strong>Submission deadline</strong><br><span>Final deadline to submit position papers / provotypes.</span></div>
+          </div>
+          <div class="trow">
+            <div class="tbadge">TBD</div>
+            <div><strong>Notification</strong><br><span>Acceptance decisions communicated to authors.</span></div>
+          </div>
+          <div class="trow">
+            <div class="tbadge">CUI 2026</div>
+            <div><strong>Workshop</strong><br><span>Co-located with CUI 2026.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="accessibility" class="section">
+      <div class="card">
+        <h2>Accessibility & Inclusion</h2>
+        <p class="lead">We aim for an accessible, respectful environment and materials that don’t punish people for having eyes.</p>
         <ul>
-          <li>Agent-mediated data exposure and identity inference</li>
-          <li>Cross-modal information leakage (text, voice, vision, sensors)</li>
-          <li>Behavioral inference and sensitive attribute prediction</li>
-          <li>Secondary data use and data governance in agentic workflows</li>
-          <li>Privacy risks for structurally vulnerable or understudied populations</li>
-          <li>Contextual integrity, data minimization, identity protection by design</li>
+          <li>Accessible PDFs and clear formatting; alt text for images where applicable.</li>
+          <li>Readable slide design (contrast, font size) and structured content.</li>
+          <li>Encourage captioning and written summaries of key discussion points where feasible.</li>
+          <li>Multiple participation modes to support different communication styles.</li>
+          <li>Adheres to ACM and SIGCHI Codes of Conduct with active facilitation.</li>
         </ul>
       </div>
-    </div>
+    </section>
 
-    <div class="callout">
-      <strong>Note:</strong> This page reflects the HAIP workshop framing and participation model described in the HAIP proposal.
-      Exact formatting instructions (templates, submission portal, page limits enforcement) can be added once CUI 2026 finalizes workshop submission logistics.
-    </div>
-  </section>
+    <section id="organizers" class="section">
+      <div class="card">
+        <h2>Organizers</h2>
+        <p class="lead">List and short bios (expand as needed).</p>
 
-  <section id="dates">
-    <h2>Important Dates</h2>
-    <p class="muted">
-      Dates are currently listed as TBD in the HAIP proposal materials. Replace these placeholders once CUI 2026 announces the workshop timeline.
-    </p>
-    <ul>
-      <li><strong>Submission deadline:</strong> TBD</li>
-      <li><strong>Notification:</strong> TBD</li>
-      <li><strong>Workshop date:</strong> TBD (co-located with CUI 2026)</li>
-    </ul>
-  </section>
+        <div class="people">
+          <div class="person">
+            <div class="name">
+              <strong>Sanchari Das</strong>
+              <span class="tag">George Mason University</span>
+            </div>
+            <p>Usable security, privacy, and human-centered AI, focusing on sociotechnical risks in emerging systems including conversational and generative AI.</p>
+          </div>
 
-  <section id="accessibility">
-    <h2>Accessibility & Inclusion</h2>
-    <p>
-      HAIP is committed to fostering an accessible, respectful, and inclusive environment. Workshop materials and communications
-      will follow accessibility best practices, including accessible PDFs, alt text for images, and clear language.
-    </p>
-    <ul>
-      <li>Slides and presentations will follow accessibility guidelines (readable fonts, sufficient contrast).</li>
-      <li>Where feasible, we encourage live captioning and written summaries of breakout discussions.</li>
-      <li>Multiple participation modes: structured talks, moderated discussion, small-group breakouts, and written contributions.</li>
-      <li>The workshop adheres to ACM and SIGCHI Codes of Conduct with active facilitation to ensure equitable participation.</li>
-    </ul>
-  </section>
+          <div class="person">
+            <div class="name">
+              <strong>Rahat Masood</strong>
+              <span class="tag">UNSW Sydney</span>
+            </div>
+            <p>Research spanning privacy and security considerations in modern interactive and networked systems.</p>
+          </div>
 
-  <section id="organizers">
-    <h2>Organizers</h2>
-    <p class="muted">Organizer list and bios based on the HAIP proposal draft.</p>
+          <div class="person">
+            <div class="name">
+              <strong>Dakuo Wang</strong>
+              <span class="tag">Northeastern University</span>
+            </div>
+            <p>Human-AI collaboration and the design of AI systems that support people in complex real-world settings.</p>
+          </div>
 
-    <ul>
-      <li><strong>Sanchari Das</strong> (George Mason University, USA)</li>
-      <li><strong>Rahat Masood</strong> (University of New South Wales, UNSW Sydney, Australia)</li>
-      <li><strong>Dakuo Wang</strong> (Northeastern University, USA)</li>
-      <li><strong>Filipo Sharevski</strong> (DePaul University, USA)</li>
-      <li><strong>Salil Kanhere</strong> (University of New South Wales, UNSW Sydney, Australia)</li>
-    </ul>
+          <div class="person">
+            <div class="name">
+              <strong>Filipo Sharevski</strong>
+              <span class="tag">DePaul University</span>
+            </div>
+            <p>Cybersecurity and privacy research with attention to human factors and systemic impacts.</p>
+          </div>
 
-    <h3 style="margin:12px 0 6px">Selected Bios</h3>
-    <p>
-      <strong>Sanchari Das</strong> is an Assistant Professor in the Information Sciences and Technology Department at George Mason University,
-      leading research at the intersection of usable security, privacy, and human-centered AI, with a focus on privacy harms and sociotechnical risks
-      in emerging technologies including conversational systems and generative AI.
-    </p>
-    <p>
-      <strong>Salil Kanhere</strong> is a Professor at UNSW Sydney and leads an Information Security and Privacy research group, working at the intersection
-      of networked systems, cybersecurity, and artificial intelligence.
-    </p>
-    <p class="muted">
-      (Additional organizer bios can be added here if/when provided in finalized materials.)
-    </p>
-  </section>
-</main>
+          <div class="person">
+            <div class="name">
+              <strong>Salil Kanhere</strong>
+              <span class="tag">UNSW Sydney</span>
+            </div>
+            <p>Information security and privacy in networked systems and AI-enabled environments.</p>
+          </div>
+        </div>
 
-<footer>
-  © HAIP Workshop (CUI 2026) · Human-Agent Identities & Privacy
-</footer>
+        <p class="small" style="margin-top:14px;">
+          Want this to look even more “conference-official”? Next step is adding: submission link, template link, program committee, and contact email in the hero sidebar.
+        </p>
+      </div>
+    </section>
 
+    <footer>
+      <div class="container">
+        © HAIP Workshop (CUI 2026) · Human–Agent Identities & Privacy<br/>
+        <span class="small">Hosted on GitHub Pages. Shockingly effective.</span>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
