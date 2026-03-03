@@ -1,2 +1,2 @@
-# haip-cui-2026
-HAIP : Human Agent Identities and Privacy
+# saphai-cui-2026
+SAPHAI : Security, Agency, Privacy of Human-AI
