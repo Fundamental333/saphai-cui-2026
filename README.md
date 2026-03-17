@@ -1,2 +1,2 @@
-# saphai-cui-2026
+# saphai
 SAPHAI : Security, Agency, Privacy of Human-AI
