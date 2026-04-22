@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SAPHAI | Security, Agency, Privacy of Human-AI</title>
-  <meta name="description" content="SAPHAI (Security, Agency, Privacy of Human-AI) workshop at CUI 2026. Security, agency, and privacy as interconnected foundations of human-AI ecosystems." />
+  <title>SAPH-AI | Security, Agency, Privacy of Human-AI</title>
+  <meta name="description" content="SAPH-AI (Security, Agency, Privacy of Human-AI) workshop website. A workshop on privacy, security, agency, identity, and governance in human-AI ecosystems." />
   <meta name="theme-color" content="#f6e8ea" />
 
   <style>
@@ -21,15 +21,16 @@
       --card:#ffffff;
 
       --border: rgba(20,20,30,.12);
-      --shadow: 0 18px 45px rgba(20,20,30,.10);
+      --shadow: 0 16px 40px rgba(20,20,30,.08);
 
       --radius: 16px;
       --radius2: 22px;
-      --max: 1120px;
+      --max: 1100px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -38,7 +39,7 @@
         radial-gradient(900px 650px at 20% -20%, rgba(160,42,51,.10), transparent 60%),
         radial-gradient(900px 650px at 90% 0%, rgba(122,15,26,.08), transparent 55%),
         linear-gradient(180deg, var(--bg2), var(--bg));
-      line-height:1.7;
+      line-height:1.65;
     }
 
     a{ color: var(--brand); text-decoration: none; }
@@ -114,25 +115,14 @@
       padding: 42px 0 18px;
     }
 
-    .hero-grid{
-      display:grid;
-      gap: 18px;
-      grid-template-columns: 1fr;
-      align-items: stretch;
-    }
-
-    @media (min-width: 960px){
-      .hero-grid{ grid-template-columns: 1.35fr .65fr; }
-    }
-
     .hero-card{
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.84));
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
       overflow:hidden;
       position: relative;
-      padding: 24px;
+      padding: 28px;
     }
 
     .hero-card:before{
@@ -201,7 +191,6 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
       padding: 11px 14px;
       border-radius: 12px;
       border: 1px solid rgba(122,15,26,.20);
@@ -223,73 +212,21 @@
       color: var(--brand);
     }
 
-    .btn .icon{
-      width: 18px;
-      height: 18px;
-      display:inline-block;
-      border-radius: 6px;
-      background: rgba(122,15,26,.10);
-      border: 1px solid rgba(122,15,26,.18);
-    }
-
-    .side{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .mini{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.88);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: 0 12px 30px rgba(20,20,30,.08);
-    }
-
-    .mini h3{
-      margin:0 0 6px;
-      font-size: 1.02rem;
-      color: var(--brand);
-    }
-
-    .mini p{
-      margin:0;
-      color: rgba(21,21,26,.82);
-      font-size: .97rem;
-    }
-
-    .pillrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top: 10px;
-    }
-
-    .pill{
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(122,15,26,.18);
-      background: rgba(246,232,234,.70);
-      color: rgba(21,21,26,.82);
-      font-size: .9rem;
-      font-weight: 600;
-    }
-
     .section{
       margin: 16px 0;
     }
 
     .card{
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(20,20,30,.06);
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(20,20,30,.05);
     }
 
     .card h2{
       margin:0 0 10px;
-      font-size: 1.42rem;
+      font-size: 1.4rem;
       letter-spacing: -.2px;
       color: var(--brand);
     }
@@ -297,7 +234,7 @@
     .card h3{
       margin: 18px 0 8px;
       color: var(--brand);
-      font-size: 1.08rem;
+      font-size: 1.06rem;
     }
 
     .lead{
@@ -317,47 +254,41 @@
 
     ul{
       margin: 10px 0 0 18px;
-      color: rgba(21,21,26,.82);
+      color: rgba(21,21,26,.84);
     }
 
     li{ margin: 6px 0; }
 
-    .timeline{
+    .dates{
       display:grid;
       gap: 10px;
       margin-top: 12px;
     }
 
-    .trow{
+    .date-row{
       display:flex;
+      justify-content:space-between;
       gap: 12px;
-      align-items:flex-start;
-      padding: 12px;
+      padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid rgba(122,15,26,.16);
       background: rgba(246,232,234,.55);
+      flex-wrap: wrap;
     }
 
-    .tbadge{
-      min-width: 108px;
-      font-size: .88rem;
+    .date-label{
+      font-weight: 700;
+      color: rgba(21,21,26,.9);
+    }
+
+    .date-value{
       color: var(--brand);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(122,15,26,.22);
-      background: rgba(255,255,255,.70);
-      text-align:center;
       font-weight: 800;
     }
 
-    .small{
-      font-size: .95rem;
-      color: rgba(21,21,26,.70);
-    }
-
     .note{
-      margin-top: 12px;
-      padding: 12px;
+      margin-top: 14px;
+      padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid rgba(122,15,26,.22);
       background: rgba(246,232,234,.70);
@@ -407,19 +338,6 @@
       color: rgba(21,21,26,.78);
     }
 
-    .meta-list{
-      display:grid;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .meta-item{
-      padding: 12px;
-      border: 1px solid rgba(122,15,26,.16);
-      border-radius: 14px;
-      background: rgba(255,255,255,.82);
-    }
-
     footer{
       margin-top: 28px;
       padding: 22px 0 36px;
@@ -435,9 +353,9 @@
       margin-top:8px;
     }
 
-    .long p{
-      margin: 0 0 14px;
-      color: rgba(21,21,26,.84);
+    .small{
+      font-size: .95rem;
+      color: rgba(21,21,26,.70);
     }
   </style>
 </head>
@@ -447,315 +365,133 @@
     <div class="container topbar-inner">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
-        <div>SAPHAI</div>
+        <div>SAPH-AI</div>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
         <a href="#about">About</a>
-        <a href="#motivation">Motivation</a>
-        <a href="#agenda">Agenda</a>
-        <a href="#solicit">Outreach</a>
-        <a href="#technical">Technical</a>
-        <a href="#accessibility">Accessibility</a>
+        <a href="#dates">Important Dates</a>
+        <a href="#cfp">Call for Participation</a>
+        <a href="#format">Workshop Format</a>
         <a href="#organizers">Organizers</a>
+        <a href="#accessibility">Accessibility</a>
       </nav>
     </div>
   </div>
 
   <main class="container">
     <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-card">
-          <div class="kicker"><span class="dot"></span> CUI 2026 Workshop · July 21–24, 2026 · Bremen, Germany</div>
-          <h1>SAPHAI: Security, Agency, Privacy of Human-AI</h1>
-          <p class="subtitle">
-            The rapid emergence of conversational AI, generative systems, and autonomous agents is reshaping how data is collected and operationalized in human-AI ecosystems. SAPHAI examines <strong>security</strong>, <strong>agency</strong>, and <strong>privacy</strong> as interconnected foundations of human-AI interaction.
-          </p>
+      <div class="hero-card">
+        <div class="kicker"><span class="dot"></span> Workshop at CUI 2026 · Location TBA</div>
+        <h1>SAPH-AI: Security, Agency, Privacy of Human-AI</h1>
+        <p class="subtitle">
+          SAPH-AI is a workshop on privacy, security, agency, identity, and governance in human-AI ecosystems, with a focus on conversational AI, generative systems, and agentic technologies.
+        </p>
 
-          <div class="cta-row">
-            <a class="btn primary" href="#about"><span class="icon" aria-hidden="true"></span>Workshop Overview</a>
-            <a class="btn" href="#agenda"><span class="icon" aria-hidden="true"></span>Agenda</a>
-            <a class="btn" href="#organizers"><span class="icon" aria-hidden="true"></span>Organizers</a>
-          </div>
-
-          <div class="note">
-            <strong>Status:</strong> Workshop details reflect the current proposal draft. Submission instructions, final deadlines, and additional logistics will be updated as conference processes are finalized.
-          </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#about">About the Workshop</a>
+          <a class="btn" href="#cfp">Call for Participation</a>
+          <a class="btn" href="#organizers">Organizers</a>
         </div>
 
-        <div class="side">
-          <div class="mini">
-            <h3>At a glance</h3>
-            <p>Dedicated forum for privacy, security, agency, identity, and governance in conversational and agentic systems.</p>
-            <div class="pillrow">
-              <span class="pill">Privacy risks</span>
-              <span class="pill">Delegated AI</span>
-              <span class="pill">Identity inference</span>
-              <span class="pill">Governance</span>
-            </div>
-          </div>
-
-          <div class="mini">
-            <h3>Submission focus</h3>
-            <p>Short position papers, prototypes, design provocations, and early-stage research artifacts.</p>
-          </div>
-
-          <div class="mini">
-            <h3>Format</h3>
-            <p>Full-day interactive workshop with keynote, paper sessions, prototypes, breakouts, and synthesis.</p>
-          </div>
+        <div class="note">
+          Additional workshop details, final deadlines, and submission information will be announced soon.
         </div>
       </div>
     </section>
 
     <section id="about" class="section">
-      <div class="card long">
-        <h2>About SAPHAI</h2>
+      <div class="card">
+        <h2>About</h2>
         <p class="lead">
-          SAPHAI proposes a dedicated forum to examine how security, agency, and privacy jointly shape conversational and agentic systems.
+          SAPH-AI brings together researchers and practitioners interested in how security, agency, and privacy jointly shape human-AI interaction.
         </p>
         <p>
-          The rapid emergence of conversational AI, generative systems, and autonomous agents is reshaping how data is collected and operationalized in human-AI ecosystems. These systems process sensitive personal data, integrate multimodal signals, construct behavioral profiles, and increasingly act on behalf of users. In doing so, they mediate agency, decision-making, and identity formation.
+          Conversational AI, generative systems, and autonomous agents are increasingly embedded in everyday communication, decision making, and digital infrastructure. These systems process sensitive data, construct behavioral profiles, and may act on behalf of users across platforms and contexts.
         </p>
         <p>
-          Within these environments, security, agency, and privacy are deeply interdependent. Security failures can undermine autonomy, privacy violations can expose identity, and constrained agency can amplify systemic risks. Yet these dimensions are often addressed separately or only after deployment.
+          This workshop examines security, agency, and privacy as interconnected foundations of human-AI ecosystems. Topics include privacy risks, identity inference, multimodal data leakage, delegated authority, transparency, accountability, and privacy-centered design for conversational and agentic systems.
         </p>
         <p>
-          SAPHAI brings together researchers from HCI, security, privacy, AI systems, and social computing to examine these dimensions as interconnected foundations of human-AI interaction. The workshop explores privacy risks, identity inference, multimodal leakage, delegated authority, governance challenges, and privacy-centered prototypes for agentic systems.
+          SAPH-AI aims to create an interdisciplinary forum for discussion across HCI, security, privacy, AI systems, social computing, and governance.
         </p>
       </div>
     </section>
 
-    <section id="motivation" class="section">
-      <div class="card long">
-        <h2>Motivation</h2>
-        <p>
-          Conversational AI systems, generative models, and autonomous agents are increasingly embedded in everyday communication, decision making, governance, and knowledge work. Unlike earlier interactive systems that responded to discrete user commands, emerging agentic architectures infer user intentions, retrieve and synthesize information across modalities, coordinate actions across external services, and execute tasks on behalf of users.
+    <section id="dates" class="section">
+      <div class="card">
+        <h2>Important Dates</h2>
+        <div class="dates">
+          <div class="date-row">
+            <span class="date-label">Submission Deadline</span>
+            <span class="date-value">TBD</span>
+          </div>
+          <div class="date-row">
+            <span class="date-label">Notification to Authors</span>
+            <span class="date-value">TBD</span>
+          </div>
+          <div class="date-row">
+            <span class="date-label">Camera-Ready Deadline</span>
+            <span class="date-value">TBD</span>
+          </div>
+          <div class="date-row">
+            <span class="date-label">Workshop Date</span>
+            <span class="date-value">TBA</span>
+          </div>
+          <div class="date-row">
+            <span class="date-label">Venue</span>
+            <span class="date-value">TBA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cfp" class="section">
+      <div class="card">
+        <h2>Call for Participation</h2>
+        <p class="lead">
+          We invite submissions and participation from researchers and practitioners working on privacy, security, agency, identity, and governance in human-AI systems.
         </p>
-        <p>
-          These systems maintain persistent memory, construct evolving user profiles, and generate representations of identity that accumulate over time. They therefore participate not only in information exchange, but in shaping how individuals are represented, interpreted, and acted upon within sociotechnical environments.
-        </p>
-        <p>
-          Agentic systems also alter the conditions under which agency is exercised. When users delegate tasks to conversational agents, they rely on the system to interpret intent, act faithfully, and respect contextual boundaries. Delegation in this setting is not merely functional. It is epistemic and representational: the system decides what to retrieve, what to prioritize, what actions to execute, and how the user is characterized in downstream interactions.
-        </p>
-        <p>
-          Privacy in conversational systems therefore extends beyond traditional concerns of storage and access control. Agentic systems infer latent traits, predict preferences, detect vulnerabilities, and generate outputs that may expose sensitive attributes about individuals or groups. Multimodal integration of text, voice, images, behavioral telemetry, and contextual metadata increases the likelihood of cross-modal leakage, identity inference, adversarial manipulation, and unintended disclosure.
-        </p>
-        <p>
-          Existing approaches to AI security and privacy have advanced adversarial robustness, model safety, differential privacy, red teaming, and compliance. Still, these approaches often treat privacy and security as post-hoc constraints. In agentic architectures, privacy and security are not peripheral safeguards. They structure how agency is enacted.
-        </p>
-        <p>
-          SAPHAI is motivated by three core objectives:
-        </p>
+
+        <h3>Topics of Interest</h3>
         <ul>
-          <li>Systematically examine emerging privacy and security risks in human-AI ecosystems, including multimodal leakage, persistent identity construction, delegated authority abuse, and cross-platform data integration.</li>
-          <li>Investigate architectural mechanisms that embed privacy and security into agentic systems in ways that preserve accountable and meaningful human agency.</li>
-          <li>Articulate a forward-looking research agenda that treats security, agency, and privacy as interdependent properties of conversational AI systems rather than isolated concerns.</li>
+          <li>Privacy and security risks in conversational and agentic AI</li>
+          <li>Identity inference, behavioral profiling, and multimodal leakage</li>
+          <li>Delegated decision making, user agency, and autonomy</li>
+          <li>Transparency, accountability, and governance of AI systems</li>
+          <li>Privacy-centered design, auditing, and safeguards for agentic systems</li>
+          <li>Human-centered evaluations of AI assistants, copilots, and autonomous agents</li>
         </ul>
+
+        <h3>Submission Information</h3>
+        <p>
+          Submission format, page limits, and review details will be announced soon.
+        </p>
+
         <div class="note">
-          In alignment with the broader CUI 2026 focus on agency and identities, SAPHAI examines how conversational systems construct, mediate, and constrain identities, and how these processes can be designed to support equitable, transparent, and trustworthy forms of delegation.
+          We welcome interdisciplinary work spanning technical, empirical, design, and policy perspectives.
         </div>
       </div>
     </section>
 
-    <section id="agenda" class="section">
+    <section id="format" class="section">
       <div class="card">
-        <h2>Agenda for the Workshop</h2>
+        <h2>Workshop Format</h2>
         <p class="lead">
-          SAPHAI is envisioned as a full-day interactive workshop balancing peer-reviewed research, privacy-centered system prototypes, collaborative design, and research agenda building.
-        </p>
-
-        <div class="timeline">
-          <div class="trow">
-            <div class="tbadge">08:45–09:00</div>
-            <div>
-              <strong>Welcome and Framing</strong><br />
-              <span>Opening remarks, shared vocabulary, and workshop framing around privacy, agency, identity, and delegated AI.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">09:00–10:00</div>
-            <div>
-              <strong>Keynote: Privacy, Agency, and the Future of Delegated AI</strong><br />
-              <span>Provocative keynote from a scholar or practitioner bridging conversational AI, privacy engineering, security, governance, or sociotechnical analysis.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">10:00–10:20</div>
-            <div>
-              <strong>Break</strong><br />
-              <span>Short break.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">10:20–12:00</div>
-            <div>
-              <strong>Paper Session I: Privacy Risks in Human-Agent Ecosystems</strong><br />
-              <span>Short talks and moderated discussion on agent-mediated exposure, identity inference, behavioral profiling, persistent identity representations, and cross-modal leakage.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">12:00–13:30</div>
-            <div>
-              <strong>Lunch</strong><br />
-              <span>Informal exchange and networking.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">13:30–14:30</div>
-            <div>
-              <strong>Paper Session II: Security, Governance, and Accountability</strong><br />
-              <span>Defense-by-design architectures, delegated coordination, transparency, dynamic consent, institutional governance, and cross-jurisdictional data flows.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">14:30–14:45</div>
-            <div>
-              <strong>Break</strong><br />
-              <span>Short break.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">14:45–15:30</div>
-            <div>
-              <strong>Prototypes for Privacy-Centered Agentic Systems</strong><br />
-              <span>Design explorations, provocations, and early-stage systems embedding data minimization, identity protection, memory inspection, auditability, and structural safeguards.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">15:30–16:15</div>
-            <div>
-              <strong>Collaborative Breakout Sessions</strong><br />
-              <span>Interdisciplinary small-group work on privacy as a precondition of agency, identity persistence, privacy by design, and governance in multi-agent ecosystems.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">16:15–16:30</div>
-            <div>
-              <strong>Break</strong><br />
-              <span>Short break.</span>
-            </div>
-          </div>
-
-          <div class="trow">
-            <div class="tbadge">16:30–17:00</div>
-            <div>
-              <strong>Synthesis and Research Roadmapping</strong><br />
-              <span>Shared taxonomy of risks, conceptual links between agency, identity, and security mechanisms, and next-step collaboration planning.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="solicit" class="section">
-      <div class="card long">
-        <h2>How We Will Solicit Papers and Attendees</h2>
-
-        <h3>Call for Participation</h3>
-        <p>
-          We will publish a detailed Call for Participation that clearly articulates the privacy-centered vision of SAPHAI and its focus on agency, identity, and security in conversational and agentic systems. The call will position the workshop as a venue for advancing rigorous, interdisciplinary scholarship that treats privacy and security not as peripheral safeguards but as foundational conditions shaping delegated autonomy, identity construction, and governance in human-AI ecosystems.
-        </p>
-        <p>
-          The workshop will invite short position papers, prototypes, design provocations, and early-stage research artifacts. We welcome conceptual, empirical, technical, policy-oriented, and design-based contributions.
-        </p>
-
-        <h3>Targeted Outreach</h3>
-        <p>
-          To ensure broad and interdisciplinary participation, the Call for Participation will be circulated through academic mailing lists, professional networks, AI and privacy communities, interdisciplinary technology-policy forums, university and lab newsletters, and public platforms such as LinkedIn, Mastodon, and related research channels.
-        </p>
-        <p>
-          We will also conduct targeted outreach to scholars and practitioners whose work bridges conversational systems and privacy, including researchers working on memory systems, agent delegation, multimodal inference, contextual integrity, automation bias, identity construction, and governance of AI systems.
-        </p>
-
-        <h3>Interdisciplinary Research Community Engagement</h3>
-        <p>
-          SAPHAI focuses on privacy, security, and agency in conversational and agentic systems. Addressing these challenges requires engagement across multiple research communities. No single discipline fully captures the technical, design, and governance issues that arise when AI systems infer identities, manage sensitive data, and act on behalf of users.
+          SAPH-AI is planned as an interactive workshop combining presentations, discussion, and collaborative exchange.
         </p>
         <ul>
-          <li>HCI researchers studying identity, agency, and human-AI interaction</li>
-          <li>Privacy and usable security scholars examining data protection, behavioral inference, and user-facing security mechanisms</li>
-          <li>AI systems and multimodal model researchers developing conversational and agentic architectures</li>
-          <li>Policy and governance scholars studying regulation, accountability, and institutional oversight of AI systems</li>
-          <li>Industry practitioners building conversational agents, AI copilots, and autonomous systems in real-world settings</li>
+          <li>Invited keynote or spotlight talk</li>
+          <li>Research paper and position paper presentations</li>
+          <li>Discussion sessions on emerging challenges in human-AI ecosystems</li>
+          <li>Collaborative exchange across security, privacy, HCI, and AI communities</li>
         </ul>
-
-        <h3>Website and Communication</h3>
-        <p>
-          SAPHAI will maintain a dedicated workshop website as the central hub for information dissemination, community engagement, and long-term visibility. The website will be managed by the Website Chair, Siddharth Das Sarkar, and will include the workshop description, goals, important dates, submission guidance, review criteria, accessibility information, organizer biographies, keynote updates, and post-workshop materials where appropriate.
-        </p>
-        <p>
-          The site is intended to remain active beyond the event to archive outcomes, support continuity, and help position SAPHAI as a recurring workshop and future symposium.
-        </p>
-
-        
-      </div>
-    </section>
-
-    <section id="technical" class="section">
-      <div class="card">
-        <h2>Technical Requirements</h2>
-        <p class="lead">
-          SAPHAI is designed as an interactive, discussion-oriented workshop and requires only minimal infrastructure.
-        </p>
-        <ul>
-          <li><strong>Projection and display:</strong> projector and screen for keynote presentations, paper sessions, and prototype demonstrations.</li>
-          <li><strong>Wi-Fi connectivity:</strong> reliable internet for demonstrations, shared documents, and collaborative work.</li>
-          <li><strong>Power access:</strong> accessible power outlets for presenters and participants using laptops and mobile devices.</li>
-          <li><strong>Whiteboard or writable surface:</strong> support for collaborative brainstorming and synthesis during breakout sessions.</li>
-          <li><strong>Participant devices:</strong> attendees are encouraged to bring laptops or tablets for collaborative note-taking and shared digital exercises.</li>
-        </ul>
-        <p class="small" style="margin-top:12px;">
-          No specialized hardware, mandatory software installation, or programming prerequisite is required.
-        </p>
-      </div>
-    </section>
-
-    <section id="accessibility" class="section">
-      <div class="card long">
-        <h2>How We Will Create an Accessible and Inclusive Experience</h2>
-
-        <h3>Accessible Materials and Communication</h3>
-        <p>
-          All workshop materials, including the Call for Participation, website content, and session guidelines, will follow accessibility best practices. Materials will use clear language, readable formatting, accessible PDFs, high-contrast visual design, and alt text for images where applicable. Where feasible, materials will be shared in advance to support varied preparation needs.
-        </p>
-
-        <h3>Inclusive Participation Formats</h3>
-        <p>
-          The workshop will incorporate multiple modes of participation, including short structured presentations, moderated discussion, small-group breakout sessions, and opportunities for written contribution during collaborative exercises. If hybrid participation is possible, remote attendees will be supported through shared documents and active facilitation.
-        </p>
-
-        <h3>Diverse Representation and Outreach</h3>
-        <p>
-          We will actively solicit participation across geographic regions, institution types, and career stages. Particular attention will be given to early-career and doctoral researchers, interdisciplinary scholars, and researchers from underrepresented and historically marginalized communities.
-        </p>
-
-        <h3>Code of Conduct and Respectful Dialogue</h3>
-        <p>
-          The workshop will adhere to ACM and SIGCHI codes of conduct. Organizers will establish shared norms for respectful discussion and actively moderate conversations to ensure equitable participation and to prevent dominance by any single perspective.
-        </p>
-
-        <h3>Sustained Inclusion Beyond the Workshop</h3>
-        <p>
-          To support continuity and broader access, we intend to share a post-workshop summary or collaborative report, provide channels for continued engagement, and encourage follow-up collaboration across institutions and disciplines.
-        </p>
       </div>
     </section>
 
     <section id="organizers" class="section">
       <div class="card">
-        <h2>Biographies of the Organizers</h2>
-        <p class="lead">Organizing committee for SAPHAI.</p>
-
+        <h2>Organizers</h2>
         <div class="people">
           <div class="person">
             <div class="name">
@@ -763,7 +499,7 @@
               <span class="tag">George Mason University</span>
             </div>
             <p>
-              Assistant Professor in the Information Sciences and Technology Department at George Mason University. She leads the Data Agency &amp; Security (DAS) Lab and works at the intersection of usable security, privacy, and human-centered AI. Her research examines privacy harms, behavioral inference, online safety, and sociotechnical risks in emerging technologies, including conversational systems and generative AI.
+              Assistant Professor in the Information Sciences and Technology Department at George Mason University. She leads the Data Agency &amp; Security Lab and works at the intersection of usable security, privacy, and human-centered AI.
             </p>
           </div>
 
@@ -773,7 +509,7 @@
               <span class="tag">UNSW Sydney</span>
             </div>
             <p>
-              Senior Lecturer in the School of Computer Science and Engineering at UNSW Sydney and Director of the UNSW Online Cyber Security Program. Her research focuses on privacy, security, and responsible AI, including privacy-preserving systems, behavioural biometrics, misinformation and social-bot detection, technology-facilitated abuse, and risks from emerging AI technologies.
+              Senior Lecturer in the School of Computer Science and Engineering at UNSW Sydney. Her research focuses on privacy, security, and responsible AI.
             </p>
           </div>
 
@@ -783,7 +519,7 @@
               <span class="tag">George Mason University</span>
             </div>
             <p>
-              Incoming PhD student in Information Science and Technology at George Mason University. He currently works as a Machine Learning Specialist at Victaulic, developing applied machine learning solutions for real-world systems. His interests include applied AI, cybersecurity, authentication systems, identity verification, and secure AI-driven infrastructures.
+              Incoming PhD student in Information Science and Technology at George Mason University. His interests include applied AI, cybersecurity, authentication systems, identity, and secure AI-driven infrastructures.
             </p>
           </div>
 
@@ -793,7 +529,7 @@
               <span class="tag">Northeastern University</span>
             </div>
             <p>
-              Associate Professor at Northeastern University, jointly appointed in Khoury College of Computer Sciences and the College of Arts, Media, and Design. His research lies at the intersection of human-computer interaction and artificial intelligence, with a focus on human-centered AI systems, collaboration, and design.
+              Associate Professor at Northeastern University working at the intersection of human-computer interaction and artificial intelligence.
             </p>
           </div>
 
@@ -803,7 +539,7 @@
               <span class="tag">DePaul University</span>
             </div>
             <p>
-              Associate Professor of human-centered cybersecurity at DePaul University and director of the Actionable Cybersecurity &amp; Accessibility Lab. His work focuses on usable security, social engineering, online misinformation, accessibility, and equitable cybersecurity education.
+              Associate Professor of human-centered cybersecurity at DePaul University. His work focuses on usable security, misinformation, accessibility, and equitable cybersecurity education.
             </p>
           </div>
 
@@ -813,32 +549,29 @@
               <span class="tag">UNSW Sydney</span>
             </div>
             <p>
-              Full Professor in the School of Computer Science and Engineering at UNSW Sydney, where he leads the Information Security and Privacy research group. His work sits at the intersection of networked systems, cybersecurity, and artificial intelligence, with extensive leadership across major IEEE and ACM venues.
+              Full Professor in the School of Computer Science and Engineering at UNSW Sydney, with research spanning networked systems, cybersecurity, and artificial intelligence.
             </p>
-          </div>
-        </div>
-
-        <div class="meta-list">
-          <div class="meta-item">
-            <strong>Conference:</strong> ACM Conversational User Interfaces (CUI 2026)
-          </div>
-          <div class="meta-item">
-            <strong>Dates:</strong> July 21–24, 2026
-          </div>
-          <div class="meta-item">
-            <strong>Location:</strong> Bremen, Germany
           </div>
         </div>
       </div>
     </section>
 
+    <section id="accessibility" class="section">
+      <div class="card">
+        <h2>Accessibility and Inclusion</h2>
+        <p>
+          SAPH-AI is committed to fostering an inclusive and accessible workshop environment. Additional information on accessibility, participation formats, and logistics will be shared as details are finalized.
+        </p>
+      </div>
+    </section>
+
     <footer>
       <div class="container">
-        © SAPHAI · Security, Agency, Privacy of Human-AI
+        © SAPH-AI · Security, Agency, Privacy of Human-AI
         <div class="footer-links">
-          <span class="small">CUI 2026 Workshop Website</span>
-          <span class="small">Bremen, Germany</span>
-          <span class="small">Managed by the SAPHAI organizing team</span>
+          <span class="small">Workshop website</span>
+          <span class="small">CUI 2026</span>
+          <span class="small">Details forthcoming</span>
         </div>
       </div>
     </footer>
