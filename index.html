@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SAPH-AI | Security, Agency, Privacy of Human-AI</title>
+  <meta
+    name="description"
+    content="SAPH-AI workshop at ACM CUI 2026 on privacy, security, agency, identity, and governance in human-AI ecosystems."
+  />
+  <meta name="theme-color" content="#f6e8ea" />
 
   <style>
     :root{
@@ -11,62 +16,86 @@
       --bg-soft:#fbf6f7;
       --text:#15151a;
       --muted:#4b4b57;
+      --subtle:#6a6a78;
 
       --brand:#7a0f1a;
       --brand-2:#a02a33;
       --blush:#f6e8ea;
       --hero:#eadfe2;
+      --card:#ffffff;
 
       --border:rgba(20,20,30,.12);
       --shadow:0 10px 24px rgba(20,20,30,.06);
 
       --radius:14px;
       --radius-lg:18px;
-      --max:1100px;
+      --max:1120px;
     }
 
-    *{box-sizing:border-box;}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
-      font-family:system-ui, -apple-system, Segoe UI, Roboto;
-      background:linear-gradient(180deg,var(--bg-soft),var(--bg));
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color:var(--text);
-      line-height:1.6;
+      background:linear-gradient(180deg,var(--bg-soft),var(--bg));
+      line-height:1.65;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:var(--brand);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+      text-underline-offset:4px;
     }
 
     .container{
       max-width:var(--max);
-      margin:auto;
+      margin:0 auto;
       padding:0 18px;
     }
 
-    /* TOP STRIP */
     .conference-strip{
       background:#fff;
       border-bottom:1px solid var(--border);
     }
 
     .conference-strip-inner{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
       padding:14px 0;
     }
 
     .conference-strip img{
-      height:60px;
+      height:62px;
+      width:auto;
+      object-fit:contain;
     }
 
-    /* NAV */
     .topbar{
       position:sticky;
       top:0;
+      z-index:100;
       background:rgba(246,232,234,.95);
+      backdrop-filter:blur(10px);
       border-bottom:1px solid var(--border);
-      backdrop-filter:blur(8px);
     }
 
     .topbar-inner{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
+      gap:14px;
       padding:12px 0;
     }
 
@@ -75,117 +104,146 @@
       align-items:center;
       gap:10px;
       font-weight:800;
+      letter-spacing:.2px;
       color:var(--brand);
+      white-space:nowrap;
     }
 
     .mini-logo{
-      width:32px;
-      height:32px;
-      border-radius:8px;
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.7), transparent 55%),
+        linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow:0 8px 16px rgba(122,15,26,.16);
+      border:1px solid rgba(122,15,26,.25);
     }
 
     .nav{
       display:flex;
-      gap:10px;
+      gap:6px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .nav a{
-      padding:6px 10px;
+      padding:8px 10px;
       border-radius:999px;
-      color:#444;
-      text-decoration:none;
-      font-size:.9rem;
+      border:1px solid transparent;
+      color:rgba(21,21,26,.78);
+      font-size:.94rem;
     }
 
     .nav a:hover{
-      background:#fff;
       color:var(--brand);
+      border-color:rgba(122,15,26,.25);
+      background:rgba(255,255,255,.55);
+      text-decoration:none;
     }
 
-    /* HERO */
-    .hero{
-      padding:20px 0;
+    .hero-wrap{
+      padding:18px 0 10px;
     }
 
-    .hero-box{
+    .hero-banner{
       background:var(--hero);
-      border-radius:var(--radius-lg);
       border:1px solid var(--border);
-      padding:28px;
+      border-radius:var(--radius-lg);
       box-shadow:var(--shadow);
+      padding:28px;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:240px 1fr;
+      grid-template-columns:250px 1fr;
       gap:28px;
       align-items:center;
     }
 
     .hero-logo-area{
       display:flex;
-      justify-content:center;
       align-items:center;
+      justify-content:center;
       min-height:220px;
     }
 
     .hero-logo{
-      max-width:200px;
-      max-height:200px;
+      max-width:220px;
+      max-height:220px;
+      width:auto;
+      height:auto;
       object-fit:contain;
     }
 
     .hero-text h1{
-      margin:0;
-      font-size:2.8rem;
+      margin:0 0 12px;
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1.08;
+      letter-spacing:-.4px;
       color:var(--brand);
     }
 
-    .tagline{
+    .hero-text .tagline{
+      margin:0 0 10px;
+      font-size:1.2rem;
+      color:rgba(21,21,26,.84);
       font-weight:700;
-      margin:8px 0;
     }
 
-    .subtitle{
+    .hero-text .subtitle{
       margin:0;
-      max-width:70ch;
+      font-size:1rem;
+      color:rgba(21,21,26,.82);
+      max-width:74ch;
     }
 
     .hero-meta{
-      margin-top:15px;
       display:flex;
-      gap:10px;
       flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
     }
 
     .pill{
-      background:#fff;
-      border:1px solid var(--border);
-      padding:6px 10px;
+      padding:8px 12px;
       border-radius:999px;
+      border:1px solid rgba(122,15,26,.18);
+      background:rgba(255,255,255,.62);
+      color:rgba(21,21,26,.86);
+      font-size:.92rem;
       font-weight:700;
-      font-size:.85rem;
     }
 
-    /* CARDS */
     .section{
       margin:16px 0;
     }
 
     .card{
-      background:#fff;
       border:1px solid var(--border);
+      background:rgba(255,255,255,.92);
       border-radius:var(--radius);
-      padding:20px;
-      box-shadow:var(--shadow);
+      padding:22px;
+      box-shadow:0 8px 18px rgba(20,20,30,.05);
     }
 
-    h2{color:var(--brand);}
-    h3{color:var(--brand);}
+    .card h2{
+      margin:0 0 10px;
+      font-size:1.42rem;
+      letter-spacing:-.2px;
+      color:var(--brand);
+    }
 
-    ul{margin-left:20px;}
+    .card h3{
+      margin:18px 0 8px;
+      color:var(--brand);
+      font-size:1.08rem;
+    }
+
+    .lead{
+      color:rgba(21,21,26,.80);
+      margin:0 0 12px;
+    }
 
     .grid2{
       display:grid;
@@ -193,175 +251,627 @@
       gap:14px;
     }
 
+    .dates{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
     .date-row{
       display:flex;
       justify-content:space-between;
-      padding:10px;
-      background:#faf3f4;
-      border-radius:10px;
-      margin-top:8px;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(122,15,26,.16);
+      background:rgba(246,232,234,.45);
+      flex-wrap:wrap;
+    }
+
+    .date-label{
+      font-weight:700;
+      color:rgba(21,21,26,.90);
+    }
+
+    .date-value{
+      color:var(--brand);
+      font-weight:800;
     }
 
     .note{
-      margin-top:10px;
-      background:#faf3f4;
-      padding:10px;
-      border-radius:10px;
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(122,15,26,.22);
+      background:rgba(246,232,234,.70);
+      color:rgba(21,21,26,.86);
+    }
+
+    .tight-list{
+      margin:10px 0 0 18px;
+      padding:0;
+      color:rgba(21,21,26,.84);
+    }
+
+    .tight-list li{
+      margin:6px 0;
+    }
+
+    .schedule{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .schedule-item{
+      border:1px solid rgba(122,15,26,.16);
+      background:rgba(246,232,234,.42);
+      border-radius:14px;
+      padding:14px;
+      display:grid;
+      grid-template-columns:150px 1fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .schedule-time{
+      font-weight:800;
+      color:var(--brand);
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(122,15,26,.15);
+      border-radius:999px;
+      padding:7px 10px;
+      text-align:center;
+      font-size:.92rem;
+    }
+
+    .schedule-title{
+      font-weight:800;
+      margin-bottom:4px;
+      color:rgba(21,21,26,.92);
+    }
+
+    .columns{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .mini-card{
+      border:1px solid rgba(122,15,26,.14);
+      background:rgba(255,255,255,.84);
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .mini-card h3{
+      margin-top:0;
     }
 
     .people{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:10px;
+      gap:12px;
+      margin-top:12px;
     }
 
     .person{
-      background:#fafafa;
-      padding:10px;
-      border-radius:10px;
-      border:1px solid var(--border);
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(122,15,26,.14);
+      background:rgba(255,255,255,.88);
+    }
+
+    .person .name{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:6px;
+      flex-wrap:wrap;
+    }
+
+    .tag{
+      font-size:.84rem;
+      color:rgba(21,21,26,.78);
+      padding:5px 9px;
+      border-radius:999px;
+      border:1px solid rgba(122,15,26,.18);
+      background:rgba(246,232,234,.65);
+      white-space:nowrap;
+      font-weight:700;
+    }
+
+    .person p{
+      margin:6px 0 0;
+      color:rgba(21,21,26,.78);
     }
 
     footer{
-      margin-top:30px;
-      padding:20px;
-      text-align:center;
-      background:#f6e8ea;
+      margin-top:28px;
+      padding:22px 0 36px;
+      color:rgba(21,21,26,.70);
+      border-top:1px solid var(--border);
+      background:rgba(246,232,234,.55);
     }
 
-    @media(max-width:900px){
-      .hero-grid,.grid2,.people{
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .small{
+      font-size:.95rem;
+      color:rgba(21,21,26,.70);
+    }
+
+    @media (max-width: 920px){
+      .grid2,
+      .columns,
+      .people{
         grid-template-columns:1fr;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-logo-area{
+        min-height:auto;
+      }
+
+      .schedule-item{
+        grid-template-columns:1fr;
+      }
+
+      .conference-strip-inner,
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav{
+        justify-content:flex-start;
       }
     }
   </style>
 </head>
 
 <body>
-
-<!-- TOP STRIP -->
-<div class="conference-strip">
-  <div class="container conference-strip-inner">
-    <img src="images/cui.png" alt="CUI 2026 logo">
-  </div>
-</div>
-
-<!-- NAV -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div class="brand">
-      <div class="mini-logo"></div>
-      SAPH-AI
-    </div>
-
-    <div class="nav">
-      <a href="#about">About</a>
-      <a href="#dates">Dates</a>
-      <a href="#cfp">Participation</a>
-      <a href="#organizers">Organizers</a>
+  <div class="conference-strip">
+    <div class="container conference-strip-inner">
+      <img src="images/cui.png" alt="CUI 2026 conference logo" />
     </div>
   </div>
-</div>
 
-<main class="container">
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-box">
-    <div class="hero-grid">
-
-      <div class="hero-logo-area">
-        <img src="images/cui.png" class="hero-logo" alt="CUI logo">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="mini-logo" aria-hidden="true"></div>
+        <div>SAPH-AI</div>
       </div>
 
-      <div class="hero-text">
-        <h1>SAPH-AI</h1>
-        <p class="tagline">Security, Agency, Privacy of Human-AI</p>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#dates">Important Dates</a>
+        <a href="#cfp">Call for Participation</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#community">Community</a>
+        <a href="#technical">Technical</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#organizers">Organizers</a>
+      </nav>
+    </div>
+  </div>
 
-        <p class="subtitle">
-          SAPH-AI is a workshop on privacy, security, agency, identity, and governance in human-AI ecosystems, with a focus on conversational AI, generative systems, and agentic technologies.
-        </p>
+  <main class="container">
+    <section class="hero-wrap">
+      <div class="hero-banner">
+        <div class="hero-grid">
+          <div class="hero-logo-area">
+            <img src="images/cui.png" class="hero-logo" alt="CUI 2026 logo" />
+          </div>
 
-        <div class="hero-meta">
-          <span class="pill">ACM CUI 2026</span>
-          <span class="pill">July 21–24, 2026</span>
-          <span class="pill">Bremen, Germany</span>
+          <div class="hero-text">
+            <h1>SAPH-AI</h1>
+            <p class="tagline">Security, Agency, Privacy of Human-AI</p>
+            <p class="subtitle">
+              SAPH-AI is a workshop on privacy, security, agency, identity, and governance in human-AI ecosystems, with a focus on conversational AI, generative systems, and agentic technologies.
+            </p>
+
+            <div class="hero-meta">
+              <span class="pill">ACM CUI 2026</span>
+              <span class="pill">July 21–24, 2026</span>
+              <span class="pill">Bremen, Germany</span>
+              <span class="pill">Full-Day Workshop</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <div class="card">
-    <h2>About</h2>
-    <p>
-      SAPH-AI brings together researchers and practitioners interested in how security, agency, and privacy jointly shape human-AI interaction.
-    </p>
-  </div>
-</section>
-
-<!-- DATES -->
-<section id="dates" class="section">
-  <div class="card">
-    <h2>Important Dates</h2>
-
-    <div class="grid2">
-      <div>
-        <h3>Conference</h3>
-        <div class="date-row"><span>Dates</span><span>July 21–24, 2026</span></div>
-        <div class="date-row"><span>Location</span><span>Bremen, Germany</span></div>
+    <section id="about" class="section">
+      <div class="card">
+        <h2>About</h2>
+        <p class="lead">
+          SAPH-AI brings together researchers and practitioners interested in how security, agency, and privacy jointly shape human-AI interaction.
+        </p>
+        <p>
+          Conversational AI, generative systems, and autonomous agents increasingly process sensitive personal data, construct behavioral profiles, integrate multimodal signals, and act on behalf of users across digital environments. In doing so, they influence autonomy, decision making, and identity formation.
+        </p>
+        <p>
+          SAPH-AI examines privacy, security, and agency as interconnected foundations of human-AI ecosystems. The workshop focuses on privacy risks, identity inference, multimodal leakage, delegated authority, transparency, accountability, and privacy-centered design for conversational and agentic systems.
+        </p>
+        <p>
+          By bringing together researchers from HCI, security, privacy, AI systems, machine learning, design, and social computing, SAPH-AI aims to advance a forward-looking research agenda for secure and privacy-centered human-AI ecosystems.
+        </p>
       </div>
+    </section>
 
-      <div>
-        <h3>Workshop</h3>
-        <div class="date-row"><span>Submission</span><span>TBD</span></div>
-        <div class="date-row"><span>Notification</span><span>TBD</span></div>
-        <div class="date-row"><span>Workshop Day</span><span>TBA</span></div>
+    <section id="dates" class="section">
+      <div class="card">
+        <h2>Important Dates</h2>
+
+        <div class="grid2">
+          <div>
+            <h3>Conference Information</h3>
+            <div class="dates">
+              <div class="date-row">
+                <span class="date-label">Conference</span>
+                <span class="date-value">ACM CUI 2026</span>
+              </div>
+              <div class="date-row">
+                <span class="date-label">Conference Dates</span>
+                <span class="date-value">July 21–24, 2026</span>
+              </div>
+              <div class="date-row">
+                <span class="date-label">Venue</span>
+                <span class="date-value">Bremen, Germany</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>Workshop Timeline</h3>
+            <div class="dates">
+              <div class="date-row">
+                <span class="date-label">Submission Deadline</span>
+                <span class="date-value">TBD</span>
+              </div>
+              <div class="date-row">
+                <span class="date-label">Notification to Authors</span>
+                <span class="date-value">TBD</span>
+              </div>
+              <div class="date-row">
+                <span class="date-label">Camera-Ready Deadline</span>
+                <span class="date-value">TBD</span>
+              </div>
+              <div class="date-row">
+                <span class="date-label">Workshop Day</span>
+                <span class="date-value">TBA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          Conference dates and venue are fixed. Workshop-specific deadlines and the exact workshop day will be announced once finalized.
+        </div>
+      </div>
+    </section>
+
+    <section id="cfp" class="section">
+      <div class="card">
+        <h2>Call for Participation</h2>
+        <p class="lead">
+          SAPH-AI invites contributions from researchers and practitioners working at the intersection of conversational AI, privacy, security, HCI, AI systems, and governance.
+        </p>
+
+        <div class="columns">
+          <div class="mini-card">
+            <h3>Submission Formats</h3>
+            <ul class="tight-list">
+              <li>Short position papers (2 to 4 pages, excluding references)</li>
+              <li>Privacy-centered system prototypes</li>
+              <li>Design provocations and early-stage research artifacts</li>
+              <li>Conceptual, empirical, technical, policy, and design perspectives</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Review Approach</h3>
+            <ul class="tight-list">
+              <li>Light peer review by organizers and invited reviewers</li>
+              <li>Evaluation of clarity, originality, interdisciplinarity, and relevance</li>
+              <li>Emphasis on discussion value, not only maturity of results</li>
+              <li>Space for emerging work and research in progress</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Topics of Interest</h3>
+        <ul class="tight-list">
+          <li>Frameworks linking privacy, identity, and agency in human-AI systems</li>
+          <li>Privacy risks, behavioral inference, automation bias, and identity persistence</li>
+          <li>Privacy-by-design architectures and safeguards for conversational AI</li>
+          <li>Accountability, consent, governance, and cross-jurisdictional data stewardship</li>
+          <li>Selective disclosure, contextual integrity, memory inspectability, and secure delegation</li>
+          <li>Critical perspectives on disproportionate impacts for historically marginalized or vulnerable populations</li>
+        </ul>
+
+        <div class="note">
+          Accepted contributors will be invited to present short talks, join structured discussions, and, where appropriate, demonstrate early-stage systems and prototypes.
+        </div>
+      </div>
+    </section>
+
+    <section id="agenda" class="section">
+      <div class="card">
+        <h2>Agenda</h2>
+        <p class="lead">
+          SAPH-AI is designed as a full-day interactive workshop balancing peer-reviewed research, privacy-centered system prototypes, collaborative design activities, and research agenda building.
+        </p>
+
+        <div class="schedule">
+          <div class="schedule-item">
+            <div class="schedule-time">08:45–09:00</div>
+            <div>
+              <div class="schedule-title">Welcome and Framing</div>
+              Opening remarks, shared vocabulary, and workshop framing around privacy, agency, identity, and delegated AI.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">09:00–10:00</div>
+            <div>
+              <div class="schedule-title">Keynote: Privacy, Agency, and the Future of Delegated AI</div>
+              Invited keynote from a scholar or practitioner bridging conversational AI, usable security, privacy engineering, governance, or sociotechnical analysis of identity and technology.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">10:00–10:20</div>
+            <div>
+              <div class="schedule-title">Break</div>
+              Short break.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">10:20–12:00</div>
+            <div>
+              <div class="schedule-title">Paper Session I: Privacy Risks in Human-Agent Ecosystems</div>
+              Short presentations and moderated discussion on agent-mediated data exposure, identity inference, behavioral profiling, persistent identity representations, cross-modal leakage, and privacy harms affecting vulnerable populations.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">12:00–13:30</div>
+            <div>
+              <div class="schedule-title">Lunch</div>
+              Informal networking and exchange.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">13:30–14:30</div>
+            <div>
+              <div class="schedule-title">Paper Session II: Security, Governance, and Accountability</div>
+              Presentations on defense-by-design architectures, secure coordination and delegation, transparency, dynamic consent, institutional governance, and cross-jurisdictional data flows.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">14:30–14:45</div>
+            <div>
+              <div class="schedule-title">Break</div>
+              Short break.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">14:45–15:30</div>
+            <div>
+              <div class="schedule-title">Prototypes for Privacy-Centered Agentic Systems</div>
+              Design explorations and early-stage systems embedding data minimization, identity protection, selective disclosure, memory inspection, auditability, and structural safeguards.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">15:30–16:15</div>
+            <div>
+              <div class="schedule-title">Collaborative Breakout Sessions</div>
+              Interdisciplinary group work on privacy as a precondition of agency, identity persistence, privacy by design, and governance in multi-agent ecosystems.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">16:15–16:30</div>
+            <div>
+              <div class="schedule-title">Break</div>
+              Short break.
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-time">16:30–17:00</div>
+            <div>
+              <div class="schedule-title">Synthesis and Research Roadmapping</div>
+              Shared taxonomy building, synthesis across themes, priority research directions, and discussion of follow-up collaboration, publications, and future workshop continuity.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="section">
+      <div class="card">
+        <h2>Interdisciplinary Community</h2>
+        <p class="lead">
+          SAPH-AI is intended as an interdisciplinary forum connecting technical, human-centered, and governance-oriented perspectives on emerging AI systems.
+        </p>
+
+        <div class="columns">
+          <div class="mini-card">
+            <h3>Communities We Aim to Engage</h3>
+            <ul class="tight-list">
+              <li>HCI researchers studying identity, agency, and human-AI interaction</li>
+              <li>Privacy and usable security scholars examining data protection and behavioral inference</li>
+              <li>AI systems and multimodal researchers developing conversational and agentic architectures</li>
+              <li>Policy and governance scholars studying accountability and institutional oversight</li>
+              <li>Industry practitioners building AI assistants, copilots, and autonomous systems</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Participation Goals</h3>
+            <ul class="tight-list">
+              <li>Interdisciplinary exchange across methods and research traditions</li>
+              <li>Inclusive participation across geography, institution type, and career stage</li>
+              <li>Space for both established scholars and emerging researchers</li>
+              <li>Longer-term collaboration through shared agendas, publications, and follow-up initiatives</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="technical" class="section">
+      <div class="card">
+        <h2>Technical Requirements</h2>
+        <p class="lead">
+          SAPH-AI is designed as an interactive, discussion-oriented workshop and requires only minimal technical infrastructure.
+        </p>
+
+        <ul class="tight-list">
+          <li><strong>Projection and display:</strong> projector and screen for keynote presentations, paper sessions, and prototype demonstrations.</li>
+          <li><strong>Wi-Fi connectivity:</strong> reliable wireless internet access for demonstrations, shared resources, and collaborative work.</li>
+          <li><strong>Power access:</strong> accessible power outlets for presenters and participants using laptops and mobile devices.</li>
+          <li><strong>Whiteboard or writable surface:</strong> support for brainstorming and synthesis during breakout activities.</li>
+          <li><strong>Participant devices:</strong> attendees are encouraged to bring laptops or tablets for collaborative note-taking and shared documents.</li>
+        </ul>
+
+        <div class="note">
+          The workshop does not require specialized hardware, mandatory software installation, or programming prerequisites.
+        </div>
+      </div>
+    </section>
+
+    <section id="accessibility" class="section">
+      <div class="card">
+        <h2>Accessibility and Inclusion</h2>
+        <p class="lead">
+          SAPH-AI is committed to fostering an accessible, respectful, and inclusive workshop environment.
+        </p>
+
+        <div class="columns">
+          <div class="mini-card">
+            <h3>Accessible Materials and Participation</h3>
+            <ul class="tight-list">
+              <li>Accessible workshop materials, alt text, and readable formatting</li>
+              <li>Clear language and advance sharing of materials where feasible</li>
+              <li>High-contrast presentations and accessible slides</li>
+              <li>Support for multiple participation modes, including structured discussion and written contribution</li>
+            </ul>
+          </div>
+
+          <div class="mini-card">
+            <h3>Inclusive Community Practice</h3>
+            <ul class="tight-list">
+              <li>Attention to early-career researchers and scholars from underrepresented communities</li>
+              <li>Respectful dialogue and active moderation</li>
+              <li>Alignment with ACM and SIGCHI codes of conduct</li>
+              <li>Post-workshop continuity through summaries, shared documents, and follow-up collaboration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          SAPH-AI recognizes that privacy research often intersects with lived experience, structural inequality, and sensitive topics, and the workshop will be designed to support equitable and meaningful participation.
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers" class="section">
+      <div class="card">
+        <h2>Organizers</h2>
+
+        <div class="people">
+          <div class="person">
+            <div class="name">
+              <strong>Sanchari Das</strong>
+              <span class="tag">George Mason University</span>
+            </div>
+            <p>
+              Assistant Professor in the Information Sciences and Technology Department at George Mason University, where she leads research at the intersection of usable security, privacy, and human-centered AI. She directs the Data Agency &amp; Security Lab and has extensive experience in interdisciplinary privacy and security research.
+            </p>
+          </div>
+
+          <div class="person">
+            <div class="name">
+              <strong>Rahat Masood</strong>
+              <span class="tag">UNSW Sydney</span>
+            </div>
+            <p>
+              Senior Lecturer in the School of Computer Science and Engineering at UNSW Sydney and Director of the UNSW Online Cyber Security Program. Her work focuses on privacy, security, responsible AI, privacy-preserving systems, behavioral biometrics, misinformation, and risks from emerging AI.
+            </p>
+          </div>
+
+          <div class="person">
+            <div class="name">
+              <strong>Siddharth Das Sarkar</strong>
+              <span class="tag">George Mason University</span>
+            </div>
+            <p>
+              Incoming PhD student in Information Science and Technology at George Mason University and current Machine Learning Specialist at Victaulic. His interests include applied AI, cybersecurity, authentication systems, identity verification, and secure AI-driven infrastructures.
+            </p>
+          </div>
+
+          <div class="person">
+            <div class="name">
+              <strong>Dakuo Wang</strong>
+              <span class="tag">Northeastern University</span>
+            </div>
+            <p>
+              Associate Professor at Northeastern University, jointly appointed in Khoury College of Computer Sciences and the College of Arts, Media, and Design. His research lies at the intersection of human-computer interaction and artificial intelligence, with a focus on human-centered AI systems.
+            </p>
+          </div>
+
+          <div class="person">
+            <div class="name">
+              <strong>Filipo Sharevski</strong>
+              <span class="tag">DePaul University</span>
+            </div>
+            <p>
+              Associate Professor of human-centered cybersecurity at DePaul University and director of the Actionable Cybersecurity &amp; Accessibility Lab. His work focuses on usable security, misinformation, accessibility, and equitable cybersecurity education.
+            </p>
+          </div>
+
+          <div class="person">
+            <div class="name">
+              <strong>Salil Kanhere</strong>
+              <span class="tag">UNSW Sydney</span>
+            </div>
+            <p>
+              Professor in the School of Computer Science and Engineering at UNSW Sydney, where he leads the Information Security and Privacy research group. His research spans networked systems, cybersecurity, and artificial intelligence, with extensive leadership across IEEE and ACM venues.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © SAPH-AI · Security, Agency, Privacy of Human-AI
+      <div class="footer-links">
+        <span class="small">ACM CUI 2026</span>
+        <span class="small">July 21–24, 2026</span>
+        <span class="small">Bremen, Germany</span>
       </div>
     </div>
-
-    <div class="note">
-      Workshop details will be announced soon.
-    </div>
-  </div>
-</section>
-
-<!-- CFP -->
-<section id="cfp" class="section">
-  <div class="card">
-    <h2>Call for Participation</h2>
-    <ul>
-      <li>Privacy and security in AI</li>
-      <li>Identity and behavioral profiling</li>
-      <li>Human-AI interaction risks</li>
-      <li>Governance and accountability</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ORGANIZERS -->
-<section id="organizers" class="section">
-  <div class="card">
-    <h2>Organizers</h2>
-    <div class="people">
-      <div class="person">Sanchari Das</div>
-      <div class="person">Rahat Masood</div>
-      <div class="person">Siddharth Das Sarkar</div>
-      <div class="person">Dakuo Wang</div>
-      <div class="person">Filipo Sharevski</div>
-      <div class="person">Salil Kanhere</div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  © SAPH-AI · ACM CUI 2026 · Bremen
-</footer>
-
+  </footer>
 </body>
 </html>
